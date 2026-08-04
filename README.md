@@ -43,4 +43,20 @@ The cache is governed by a Finite-State Machine that handles the following scena
 3.  **Read/Write Miss (Clean):** The required block is fetched from memory.
 4.  **Read/Write Miss (Dirty):** The existing dirty block is written back to memory before the new block is fetched.
 
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> CompareTag: Request Valid
+    CompareTag --> Idle: Hit & Clean
+    CompareTag --> WriteBack: Miss & Dirty
+    CompareTag --> Allocate: Miss & Clean
+    WriteBack --> Allocate: Memory Ready
+    Allocate --> CompareTag: Memory Ready
+## Address Breakdown
+The 32-bit address is partitioned as follows:
+
+![Address Map](./images/address_map.png)
+
+* **Tag:** 18 bits
+* **Index:** 10 bits
+* **Block Offset:** 4 bits
 ---
