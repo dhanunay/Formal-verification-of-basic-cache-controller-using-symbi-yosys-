@@ -44,7 +44,3 @@ The cache is governed by a Finite-State Machine that handles the following scena
 4.  **Read/Write Miss (Dirty):** The existing dirty block is written back to memory before the new block is fetched.
 
 ---
-
-*This design follows the architectural principles found in standard computer organization literature.*
-
-Would you like a summary of the next section covering the state transitions within the FSM?
