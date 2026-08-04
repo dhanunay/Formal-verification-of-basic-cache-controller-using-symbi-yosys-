@@ -4,7 +4,8 @@ This README provides an overview of the Cache Controller design based on the spe
 
 # Simple Cache Controller (16 KB)
 
-This project implements a Finite-State Machine (FSM) based controller for a 16 KB direct-mapped cache. The design manages requests between a 32-bit processor interface and a 128-bit memory interface.
+This project implements Formal verifiaction of a cache controller for a 16 KB direct-mapped cache
+ The cache controller manages requests between a 32-bit processor interface and a 128-bit memory interface.
 
 ## Cache Specifications
 
