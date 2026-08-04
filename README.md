@@ -46,7 +46,10 @@ The cache is governed by a Finite-State Machine that handles the following scena
 
 <img width="498" height="436" alt="image" src="https://github.com/user-attachments/assets/163e7dde-cb4e-4f53-a245-975d4bdc5a5f" />
 
-<sub>Source: [Patterson & Hennessy](https://shop.elsevier.com/books/book-companion/9780124077263)</sub>
+<sub>Source: [COMPUTER
+ORGANIZATION
+AND DESIGN
+THE HARDWARE / SOFTWARE INTERFACE](https://shop.elsevier.com/books/book-companion/9780124077263)</sub>
 
 
 ---
