@@ -1,0 +1,4 @@
+00 idle
+01 compare_tag
+10 allocate
+11 write_back

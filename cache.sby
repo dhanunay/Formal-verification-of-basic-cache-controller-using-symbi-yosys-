@@ -1,0 +1,63 @@
+[tasks]
+basic bmc
+repro_bug1 prove
+repro_bug2 prove
+repro_bug3 prove
+cover
+prove
+noverific cover
+basic cover : default
+
+[options]
+cover:
+mode cover
+depth 80
+append 3
+[engines]
+smtbmc  --progress boolector
+--
+prove:
+mode prove
+append 10
+depth 20
+[engines] 
+#abc pdr -c "pdr -v"
+smtbmc cvc5
+smtbmc bitwuzla
+abc pdr
+btor rIC3
+
+
+--
+bmc: 
+mode bmc
+append 5
+depth 40
+[engines]
+smtbmc  --progress 
+#btor pono
+#smtbmc cvc5
+#smtbmc bitwuzla
+#aiger rIC3
+#abc bmc3
+#abc sim3
+--
+
+
+
+[script]
+repro_bug1: read -define BUG1=1
+repro_bug2: read -define BUG2=1
+repro_bug3: read -define BUG3=1
+noverific: read -noverific 
+read -formal cache_def.sv
+read -formal dm_cache_data.sv 
+read -formal dm_cache_tag.sv
+read -formal dm_cache_fsm.sv
+prep -top dm_cache_fsm
+
+[files]
+cache_def.sv	
+dm_cache_data.sv
+dm_cache_tag.sv
+dm_cache_fsm.sv	
