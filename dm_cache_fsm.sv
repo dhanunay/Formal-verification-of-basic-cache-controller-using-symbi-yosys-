@@ -254,10 +254,6 @@ assign is_tag_read_x = ^tb_tag_read_tag;
 always@(posedge clk)
 	f_past_valid <= 'b1;
 
-
-
-
-
 always @(posedge clk) begin 
 //	assume (cpu_req.addr < 10);
 //	assume (cpu_req.data < 10);
