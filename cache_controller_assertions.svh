@@ -78,20 +78,7 @@ end
 
 end 
 
-
-
-
 always @(posedge clk) begin 
- //a_inv: assert(rstate ==    cache_state_type'(idle) );
-
-//if( f_past_valid && $past(cpu_res.ready)&& ($past(rst) ==1'b0)  )
-  //   m3:assume(cpu_req.valid == 1 );
-
- 
-// if($past(cpu_req.valid) == 1'b1) 
-//      m4 :assume(cpu_req.valid == 1'b0);
-
-
 
 if(  f_past_valid &&  ($past(rstate,1) ==  cache_state_type'(idle))  && $past(cpu_req.valid,1) && $past(!rst) )  
  a1: assert (rstate == cache_state_type'(compare_tag) );
@@ -172,7 +159,6 @@ if( (f_past_valid &&  ((rstate) ==  cache_state_type'( compare_tag )) &&  (tag_r
 end 
 
 
-
 // if cache controller is in 'compare_tag' state and requested cache is miss, clean and  valid---? is valid necessary
 // issue read request to lower level memory
 
@@ -191,14 +177,10 @@ if( (f_past_valid && $past(!rst) &&  ((rstate) ==  cache_state_type'( compare_ta
 
 	  a14_c: cover(cpu_res.ready == 1'b1);
 	  a15_c: cover(  data_req.we && data_write[ ((cpu_req.addr[3:2]+1'b1) *32)-1 -: 32    ] ==  cpu_req.data  );
-
-
-
 end 
 
 // if cache controller is in 'compare_tag' state and cpu_read, requested cache is hit and  valid
 //cache controller response data should be equal to data read memory output
-
 
 if( (f_past_valid && $past(!rst) &&  ((rstate) ==  cache_state_type'( compare_tag )) && $past(!cpu_req.rw) && (tag_read.valid)  && (cache_hit) ) ) begin
  	 a16: assert(cpu_res.ready == 1'b1);
@@ -207,8 +189,6 @@ if( (f_past_valid && $past(!rst) &&  ((rstate) ==  cache_state_type'( compare_ta
          a16_c: cover(cpu_res.ready == 1'b1);
  	 a17_c :cover(  data_read[ ((cpu_req.addr[3:2]+1'b1) *32)-1 -: 32    ] ==  cpu_res.data  );
 
-
-
 end 
 
 // dummy 
@@ -216,8 +196,6 @@ if( (f_past_valid &&  ((rstate) ==  cache_state_type'( compare_tag )) &&  (tag_r
 
 	a18 : assert(mem_req.addr == {tag_read.tag, cpu_req.addr[TAGLSB-1:0]}  );
 	a19 : assert(mem_req.data ==  data_read     );
-
-     
 end 
 
 // / if cache controller is in 'write_back' state and issue the read request to lower level memory based on cpu request
@@ -251,13 +229,9 @@ end
 
 end 
 
-
-
 (* anyconst *) logic [9:0] f_index;  // symbolic constant 
 
 always @(posedge clk) begin
-
-
 // assume(data_req.index == sym_index);
 if( f_past_valid && $past(data_req.we) && $past(data_req.index) == f_index  ) 
 	if(!data_req.we  && data_req.index == f_index )
