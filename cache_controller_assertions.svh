@@ -70,7 +70,7 @@ always @(posedge clk) begin
 // The cpu request should be held constant in other than idle fsm stage
 if( rstate !=  cache_state_type'(idle))	begin
  	 m5: assume(cpu_req.valid ==0);
-      m6: assume($stable(cpu_req.addr)  );
+     m6: assume($stable(cpu_req.addr)  );
   	 m7: assume($stable(cpu_req.data)  );
   	 m8: assume($stable(cpu_req.rw)  );
 
