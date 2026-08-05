@@ -25,10 +25,10 @@ module dm_cache_tag(
 //(* mem2reg *)cache_def::cache_tag_type tag_mem[0:1023];  
 logic [19:0] tag_mem[0:1023];  
 
- //initial  begin      
- //    for (int i=0; i<1024; i++)       
- //        tag_mem[i] = '0;  
- //end  
+ initial  begin      
+     for (int i=0; i<1024; i++)       
+         tag_mem[i] = '0;  
+ end  
 
 assign tag_read =   tag_mem[tag_req.index]   ; 
 
