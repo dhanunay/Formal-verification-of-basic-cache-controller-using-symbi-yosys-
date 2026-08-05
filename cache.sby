@@ -60,4 +60,5 @@ prep -top dm_cache_fsm
 cache_def.sv	
 dm_cache_data.sv
 dm_cache_tag.sv
+cache_controller_assertions.svh
 dm_cache_fsm.sv	
